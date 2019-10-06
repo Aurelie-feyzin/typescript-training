@@ -6,6 +6,11 @@ describe('enhanced object literals', () => {
       // Using NEW Object Literal Syntax, return a literal that will allow the tests to pass
       return {
         type: 'Musician',
+          name,
+          dead,
+        wantsToPlayWith: function (target){
+          return `${this.name} wants to play with ${target.name} ${target.dead ? 'but he is' : 'and he is not'} dead`;
+        }
         // - in ES5 you'd do:
         // name: name,
         // dead: dead,
@@ -16,14 +21,14 @@ describe('enhanced object literals', () => {
       }
     }
 
-    const john = createBeatle('John', true)
-    const paul = createBeatle('Paul', false)
-    const george = createBeatle('George', false)
+    const john = createBeatle('John', true);
+    const paul = createBeatle('Paul', false);
+    const george = createBeatle('George', false);
 
-    expect(paul.name).toBe('Paul')
-    expect(john.dead).toBe(true)
-    expect(george.type).toBe('Musician')
-    expect(paul.wantsToPlayWith(john)).toBe('Paul wants to play with John but he is dead')
-    expect(paul.wantsToPlayWith(george)).toBe('Paul wants to play with George and he is not dead')
+    expect(paul.name).toBe('Paul');
+    expect(john.dead).toBe(true);
+    expect(george.type).toBe('Musician');
+    expect(paul.wantsToPlayWith(john)).toBe('Paul wants to play with John but he is dead');
+    expect(paul.wantsToPlayWith(george)).toBe('Paul wants to play with George and he is not dead');
   })
-})
+});
